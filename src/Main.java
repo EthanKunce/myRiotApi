@@ -3,6 +3,8 @@
 // import org.json.JSONArray;
 import java.util.ArrayList;
 import java.io.FileReader;
+import java.lang.Runtime.Version;
+import java.net.http.HttpClient;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -10,9 +12,8 @@ import org.json.simple.parser.*;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception{
-        // System.out.println("Hello World"); 
-
+    //exception needed in case I/O Error
+    public void parseMatch(String FILENAME) throws Exception{
         Object jParser = new JSONParser().parse(new FileReader("response.json"));
 
         JSONObject matchDto = (JSONObject) jParser;
@@ -42,7 +43,11 @@ public class Main {
             // playerData.add(partcipants.get(i));
             System.out.println(playerData.get(i).get("summonerName"));
         }
-        // "summonerName"
+
+    }
+    public static void main(String[] args){
+        HttpClient client = HttpClient.newBuilder();
         
+
     }
 }
